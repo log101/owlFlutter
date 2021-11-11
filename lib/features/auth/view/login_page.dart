@@ -18,6 +18,7 @@ class _LoginPageState extends State<LoginPage> {
           child: Column(
         children: [
           TextFormField(),
+          TextFormField(),
           ElevatedButton(onPressed: () {}, child: Text("Submit")),
         ],
       )),
