@@ -10,12 +10,7 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required AuthRepository authRepository})
       : _authRepository = authRepository,
-        super(Unauthenticated()) {
-    on<AuthSubmitted>(_authSubmitted);
-  }
+        super(Unauthenticated(username: "", password: "")) {}
 
-  late StreamSubscription _authSubscription;
   final AuthRepository _authRepository;
-
-  void _authSubmitted(AuthSubmitted event, Emitter emit) {}
 }

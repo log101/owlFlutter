@@ -38,6 +38,7 @@ dependencies:
   firebase_auth: ^3.2.0
   firebase_auth_web: ^3.2.0
   bloc: ^7.2.1
+  flutter_bloc: ^7.3.3
 
 dev_dependencies:
   flutter_test:
