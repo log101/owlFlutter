@@ -1,13 +1,23 @@
 part of 'auth_bloc.dart';
 
-@immutable
-abstract class AuthState {}
-
-class Unauthenticated extends AuthState {
-  Unauthenticated({required this.username, required this.password});
-
-  final String username;
-  final String password;
+enum AppStatus {
+  authenticated,
+  unauthenticated,
 }
 
-class Authenticated extends AuthState {}
+@immutable
+abstract class AuthState extends Equatable {}
+
+class Unauthenticated extends AuthState {
+  @override
+  List<Object?> get props => [];
+}
+
+class Authenticated extends AuthState {
+  Authenticated(this.user);
+
+  final User? user;
+
+  @override
+  List<Object?> get props => [user];
+}
