@@ -10,7 +10,7 @@ class Todo {
       this.info = "",
       this.done = false,
       this.category = ""});
-  final String date;
+  final Timestamp date;
   final String category;
   final String title;
   final String howto;
@@ -22,7 +22,7 @@ class Todo {
   static Todo fromDocument(DocumentSnapshot doc) {
     return Todo(
       id: doc.id,
-      date: doc.get("date"),
+      date: doc.get("timestamp"),
       title: doc.get("title"),
       howto: doc.get("howto"),
       imageurl: doc.get("imageurl"),

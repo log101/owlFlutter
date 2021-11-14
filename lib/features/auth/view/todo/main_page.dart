@@ -1,4 +1,5 @@
 import 'package:auth/features/auth/bloc/bloc.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -13,12 +14,22 @@ class TodoMainPage extends StatefulWidget {
 
 class _TodoMainPageState extends State<TodoMainPage> {
   int _selectedIndex = 0;
+  final DateTime today = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         actions: [
+          IconButton(
+              onPressed: () {
+                showDatePicker(
+                    context: context,
+                    initialDate: today,
+                    firstDate: today.subtract(Duration(days: 365)),
+                    lastDate: today.add(Duration(days: 365)));
+              },
+              icon: Icon(Icons.calendar_today)),
           IconButton(
               onPressed: () => context.read<AuthBloc>().add(AuthLoggedOut()),
               icon: Icon(Icons.logout)),
