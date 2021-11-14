@@ -1,5 +1,6 @@
 import 'package:auth/features/auth/bloc/auth_bloc.dart';
 import 'package:auth/features/auth/repository/auth_repository.dart';
+import 'package:auth/features/auth/view/initializing_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -18,7 +19,7 @@ class AuthApp extends StatelessWidget {
           child: BlocProvider(
             create: (context) =>
                 AuthBloc(authRepository: AuthRepository(FirebaseAuth.instance)),
-            child: LoginPage(),
+            child: InitializingPage(),
           ),
         ),
       ),

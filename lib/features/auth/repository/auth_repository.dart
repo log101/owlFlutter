@@ -1,13 +1,20 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class AuthRepository {
   AuthRepository(this._firebaseInstance);
 
   final FirebaseAuth _firebaseInstance;
 
-  User? get user => _firebaseInstance.currentUser;
+  Stream<User?> get user {
+    return _firebaseInstance.authStateChanges().map((User? user) {
+      return user;
+    });
+  }
+
+  FirebaseAuth get firebaseInstance => _firebaseInstance;
 
   Future<void> logIn(String username, String password) async {
     try {
@@ -21,5 +28,9 @@ class AuthRepository {
         print('Wrong password provided for that user.');
       }
     }
+  }
+
+  Future<void> logOut() {
+    return _firebaseInstance.signOut();
   }
 }
