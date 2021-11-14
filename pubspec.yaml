@@ -41,6 +41,7 @@ dependencies:
   flutter_bloc: ^7.3.3
   equatable: ^2.0.3
   cloud_firestore: ^3.1.0
+  google_fonts: ^2.1.0
 
 dev_dependencies:
   flutter_test:

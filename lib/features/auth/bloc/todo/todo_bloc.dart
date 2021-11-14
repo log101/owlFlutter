@@ -3,7 +3,6 @@ import 'dart:async';
 import 'package:auth/features/auth/model/model.dart';
 import 'package:auth/features/auth/repository/todo_repository.dart';
 import 'package:bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:equatable/equatable.dart';
 
 part 'todo_event.dart';
@@ -23,7 +22,6 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
       TodoRequested event, Emitter<TodoState> emit) async {
     emit(TodoLoading(const []));
     final todos = await _todoRepository.getTodos();
-    print(todos);
     emit(TodoLoaded(todos));
   }
 }

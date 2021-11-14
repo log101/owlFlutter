@@ -9,7 +9,7 @@ class TodoRepository {
   final FirebaseFirestore _firebaseInstance;
 
   Future<List<Todo>> getTodos() async {
-    final questionDocs = await _firebaseInstance.collection("todos").get();
+    final questionDocs = await _firebaseInstance.collection("recipes").get();
     return questionDocs.docs.map((doc) => Todo.fromDocument(doc)).toList();
   }
 }
