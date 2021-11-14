@@ -1,5 +1,9 @@
 import 'package:auth/features/auth/auth.dart';
-import 'package:auth/features/auth/bloc/auth_bloc.dart';
+import 'package:auth/features/auth/bloc/auth/auth_bloc.dart';
+import 'package:auth/features/auth/bloc/bloc.dart';
+import 'package:auth/features/auth/repository/todo_repository.dart';
+import 'package:auth/features/auth/view/todo/main_page.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'view.dart';
@@ -16,7 +20,11 @@ class _InitializingPageState extends State<InitializingPage> {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthBloc, AuthState>(builder: (context, state) {
       if (state is Authenticated) {
-        return WelcomePage();
+        return BlocProvider(
+          create: (context) => TodoBloc(
+              todoRepository: TodoRepository(FirebaseFirestore.instance)),
+          child: TodoMainPage(),
+        );
       } else if (state is Unauthenticated) {
         return LoginPage();
       } else

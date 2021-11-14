@@ -1,4 +1,4 @@
-import 'package:auth/features/auth/bloc/auth_bloc.dart';
+import 'package:auth/features/auth/bloc/auth/auth_bloc.dart';
 import 'package:auth/features/auth/repository/auth_repository.dart';
 import 'package:auth/features/auth/view/initializing_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -12,17 +12,10 @@ class AuthApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(),
-        body: Center(
-          child: BlocProvider(
-            create: (context) =>
-                AuthBloc(authRepository: AuthRepository(FirebaseAuth.instance)),
-            child: InitializingPage(),
-          ),
-        ),
-      ),
+    return BlocProvider(
+      create: (context) =>
+          AuthBloc(authRepository: AuthRepository(FirebaseAuth.instance)),
+      child: const InitializingPage(),
     );
   }
 }
