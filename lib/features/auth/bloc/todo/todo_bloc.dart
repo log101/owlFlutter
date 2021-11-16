@@ -22,13 +22,12 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
   FutureOr<void> _todoRequested(
       TodoRequested event, Emitter<TodoState> emit) async {
     emit(TodoLoading(const [], event.date));
-    final todos = await _todoRepository.getTodos();
+    final todos = await _todoRepository.getTodos(event.date);
     emit(TodoLoaded(todos, event.date));
   }
 
   FutureOr<void> _todoDateChanged(
       TodoDateChanged event, Emitter<TodoState> emit) {
-    print(event.date);
     add(TodoRequested(event.date));
   }
 }
