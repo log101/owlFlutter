@@ -13,7 +13,7 @@ part 'auth_state.dart';
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
   AuthBloc({required AuthRepository authRepository})
       : _authRepository = authRepository,
-        super(Unauthenticated(null)) {
+        super(const Unauthenticated(null)) {
     on<AuthSubmitted>(_authSubmitted);
     on<AuthLoggedOut>(_authLoggedOut);
     on<AuthChanged>(_authChanged);
@@ -34,7 +34,7 @@ class AuthBloc extends Bloc<AuthEvent, AuthState> {
 
   FutureOr<void> _authChanged(AuthChanged event, Emitter<AuthState> emit) {
     if (event.user == null) {
-      emit(Unauthenticated(null));
+      emit(const Unauthenticated(null));
     } else {
       emit(Authenticated(event.user));
     }
