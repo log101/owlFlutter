@@ -13,23 +13,28 @@ class TodoMainPage extends StatefulWidget {
 }
 
 class _TodoMainPageState extends State<TodoMainPage> {
-  int _selectedIndex = 0;
-  final DateTime today = DateTime.now();
+  final int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
+    void _selectDate() async {
+      final DateTime? newDate = await showDatePicker(
+        context: context,
+        initialDate: context.read<TodoBloc>().state.date,
+        firstDate: DateTime(2017, 1),
+        lastDate: DateTime(2022, 7),
+        helpText: 'Select a date',
+      );
+
+      if (newDate != null) {
+        context.read<TodoBloc>().add(TodoRequested(newDate));
+      }
+    }
+
     return Scaffold(
       appBar: AppBar(
         actions: [
-          IconButton(
-              onPressed: () {
-                showDatePicker(
-                    context: context,
-                    initialDate: today,
-                    firstDate: today.subtract(Duration(days: 365)),
-                    lastDate: today.add(Duration(days: 365)));
-              },
-              icon: Icon(Icons.calendar_today)),
+          IconButton(onPressed: _selectDate, icon: Icon(Icons.calendar_today)),
           IconButton(
               onPressed: () => context.read<AuthBloc>().add(AuthLoggedOut()),
               icon: Icon(Icons.logout)),

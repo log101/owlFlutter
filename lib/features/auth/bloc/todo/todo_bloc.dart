@@ -11,17 +11,23 @@ part 'todo_state.dart';
 class TodoBloc extends Bloc<TodoEvent, TodoState> {
   TodoBloc({required TodoRepository todoRepository})
       : _todoRepository = todoRepository,
-        super(TodoNotLoaded(const [])) {
+        super(TodoNotLoaded(const [], DateTime.now())) {
     on<TodoRequested>(_todoRequested);
-    add(TodoRequested());
+    on<TodoDateChanged>(_todoDateChanged);
+    add(TodoRequested(DateTime.now()));
   }
 
   final TodoRepository _todoRepository;
 
   FutureOr<void> _todoRequested(
       TodoRequested event, Emitter<TodoState> emit) async {
-    emit(TodoLoading(const []));
+    emit(TodoLoading(const [], state.date));
     final todos = await _todoRepository.getTodos();
-    emit(TodoLoaded(todos));
+    emit(TodoLoaded(todos, state.date));
+  }
+
+  FutureOr<void> _todoDateChanged(
+      TodoDateChanged event, Emitter<TodoState> emit) {
+    add(TodoRequested(event.date));
   }
 }

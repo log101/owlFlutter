@@ -7,6 +7,22 @@ abstract class TodoEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class TodoRequested extends TodoEvent {}
+class TodoRequested extends TodoEvent {
+  const TodoRequested(this.date);
+
+  final DateTime date;
+
+  @override
+  List<Object> get props => [date];
+}
 
 class TodoRetrieved extends TodoEvent {}
+
+class TodoDateChanged extends TodoEvent {
+  const TodoDateChanged(this.date);
+
+  final DateTime date;
+
+  @override
+  List<Object> get props => [date];
+}

@@ -4,7 +4,6 @@ import 'package:auth/features/auth/view/initializing_page.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:auth/features/features.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class AuthApp extends StatelessWidget {
