@@ -26,5 +26,5 @@ class TodoLoaded extends TodoState {
   List<Todo> get todos => _todos;
 
   @override
-  List<Object> get props => [todos];
+  List<Object> get props => [todos, date];
 }

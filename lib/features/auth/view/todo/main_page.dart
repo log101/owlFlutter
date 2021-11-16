@@ -27,7 +27,7 @@ class _TodoMainPageState extends State<TodoMainPage> {
       );
 
       if (newDate != null) {
-        context.read<TodoBloc>().add(TodoRequested(newDate));
+        context.read<TodoBloc>().add(TodoDateChanged(newDate));
       }
     }
 

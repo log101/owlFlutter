@@ -14,20 +14,21 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
         super(TodoNotLoaded(const [], DateTime.now())) {
     on<TodoRequested>(_todoRequested);
     on<TodoDateChanged>(_todoDateChanged);
-    add(TodoRequested(DateTime.now()));
+    add(TodoRequested(state.date));
   }
 
   final TodoRepository _todoRepository;
 
   FutureOr<void> _todoRequested(
       TodoRequested event, Emitter<TodoState> emit) async {
-    emit(TodoLoading(const [], state.date));
+    emit(TodoLoading(const [], event.date));
     final todos = await _todoRepository.getTodos();
-    emit(TodoLoaded(todos, state.date));
+    emit(TodoLoaded(todos, event.date));
   }
 
   FutureOr<void> _todoDateChanged(
       TodoDateChanged event, Emitter<TodoState> emit) {
+    print(event.date);
     add(TodoRequested(event.date));
   }
 }
