@@ -4,6 +4,7 @@ A patient tracking app.
 
 ## Getting Started
 
+- [ ] Provide validation and feedback for login
 - [ ] Implement todo item done feature
 - [ ] Implement sign-in
 - [ ] Implement doctor account
