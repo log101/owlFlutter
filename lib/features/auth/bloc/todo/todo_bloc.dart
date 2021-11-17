@@ -15,6 +15,7 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
     on<TodoRequested>(_todoRequested);
     on<TodoDateChanged>(_todoDateChanged);
     on<TodoAdded>(_todoAdded);
+    on<TodoMarked>(_todoMarked);
     add(TodoRequested(state.date));
   }
 
@@ -34,5 +35,10 @@ class TodoBloc extends Bloc<TodoEvent, TodoState> {
 
   FutureOr<void> _todoAdded(TodoAdded event, Emitter<TodoState> emit) {
     _todoRepository.addTodo(event.todo);
+  }
+
+  FutureOr<void> _todoMarked(TodoMarked event, Emitter<TodoState> emit) {
+    _todoRepository.markTodo(event.todo.id, !event.todo.done);
+    add(TodoRequested(state.date));
   }
 }

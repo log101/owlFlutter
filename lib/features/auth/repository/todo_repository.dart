@@ -12,7 +12,6 @@ class TodoRepository {
       _firebaseInstance.collection("recipes");
 
   Future<List<Todo>> getTodos(DateTime date) async {
-    print(Timestamp.fromDate(date));
     final questionDocs = await _todosCollection
         .where("timestamp",
             isGreaterThan:
@@ -25,6 +24,17 @@ class TodoRepository {
   }
 
   Future<void> addTodo(Todo todo) async {
-    _todosCollection.add(Todo.toMap(todo)).catchError((error) => print(error));
+    _todosCollection
+        .add(Todo.toMap(todo))
+        .then((_) => null)
+        .catchError((error) => print(error));
+  }
+
+  Future<void> markTodo(String id, bool val) async {
+    _todosCollection
+        .doc(id)
+        .update({'done': val})
+        .then((value) => null)
+        .catchError((error) => print(error));
   }
 }

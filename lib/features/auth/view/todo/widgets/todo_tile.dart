@@ -1,5 +1,7 @@
+import 'package:auth/features/auth/bloc/bloc.dart';
 import 'package:auth/features/auth/model/model.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/src/provider.dart';
 
 class TodoTile extends StatelessWidget {
   TodoTile(this.todo);
@@ -9,6 +11,7 @@ class TodoTile extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListTile(
+      onTap: () => context.read<TodoBloc>().add(TodoMarked(todo)),
       contentPadding: EdgeInsets.all(12.0),
       leading: Image.network(
           "https://via.placeholder.com/40"), // Image.network(todo.imageurl)

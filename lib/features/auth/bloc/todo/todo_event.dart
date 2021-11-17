@@ -35,3 +35,12 @@ class TodoAdded extends TodoEvent {
   @override
   List<Object> get props => [todo];
 }
+
+class TodoMarked extends TodoEvent {
+  const TodoMarked(this.todo);
+
+  final Todo todo;
+
+  @override
+  List<Object> get props => [todo];
+}
