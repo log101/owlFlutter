@@ -1,9 +1,9 @@
 import 'package:auth/features/auth/bloc/bloc.dart';
-import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:auth/features/auth/view/todo/pages/add_todos_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_fonts/google_fonts.dart';
-import 'widgets/widgets.dart';
+
+import 'pages/list_todos_page.dart';
 
 class TodoMainPage extends StatefulWidget {
   const TodoMainPage({Key? key}) : super(key: key);
@@ -13,7 +13,7 @@ class TodoMainPage extends StatefulWidget {
 }
 
 class _TodoMainPageState extends State<TodoMainPage> {
-  final int _selectedIndex = 0;
+  int _selectedIndex = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -31,6 +31,8 @@ class _TodoMainPageState extends State<TodoMainPage> {
       }
     }
 
+    List<Widget> _tabs = [ListTodosPage(), AddTodosPage(), ListTodosPage()];
+
     return Scaffold(
       appBar: AppBar(
         actions: [
@@ -40,15 +42,7 @@ class _TodoMainPageState extends State<TodoMainPage> {
               icon: Icon(Icons.logout)),
         ],
       ),
-      body: BlocBuilder<TodoBloc, TodoState>(
-        builder: (context, state) {
-          return Center(
-            child: Column(children: [
-              for (var todo in state.todos) TodoTile(todo),
-            ]),
-          );
-        },
-      ),
+      body: _tabs.elementAt(_selectedIndex),
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Theme.of(context).primaryColor,
         selectedItemColor: Colors.white,
@@ -67,6 +61,11 @@ class _TodoMainPageState extends State<TodoMainPage> {
             label: 'Learn',
           )
         ],
+        onTap: (index) {
+          setState(() {
+            _selectedIndex = index;
+          });
+        },
         currentIndex: _selectedIndex,
       ),
     );

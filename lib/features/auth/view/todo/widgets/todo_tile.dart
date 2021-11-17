@@ -10,7 +10,8 @@ class TodoTile extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.all(12.0),
-      leading: Image.network(todo.imageurl),
+      leading: Image.network(
+          "https://via.placeholder.com/40"), // Image.network(todo.imageurl)
       title: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
         Text(todo.title),
         Text(todo.howto, style: TextStyle(color: Colors.grey)),

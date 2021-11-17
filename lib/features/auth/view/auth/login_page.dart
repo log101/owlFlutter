@@ -23,23 +23,24 @@ class _LoginPageState extends State<LoginPage> {
         body: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Form(
+              key: _formKey,
               child: Column(
-            children: [
-              TextFormField(
-                onChanged: (val) => _username = val,
-              ),
-              TextFormField(
-                onChanged: (val) => _password = val,
-              ),
-              ElevatedButton(
-                  onPressed: () {
-                    context
-                        .read<AuthBloc>()
-                        .add(AuthSubmitted(_username, _password));
-                  },
-                  child: Text("Submit")),
-            ],
-          )),
+                children: [
+                  TextFormField(
+                    onChanged: (val) => _username = val,
+                  ),
+                  TextFormField(
+                    onChanged: (val) => _password = val,
+                  ),
+                  ElevatedButton(
+                      onPressed: () {
+                        context
+                            .read<AuthBloc>()
+                            .add(AuthSubmitted(_username, _password));
+                      },
+                      child: Text("Submit")),
+                ],
+              )),
         ),
       );
     });

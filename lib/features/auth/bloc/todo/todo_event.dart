@@ -26,3 +26,12 @@ class TodoDateChanged extends TodoEvent {
   @override
   List<Object> get props => [date];
 }
+
+class TodoAdded extends TodoEvent {
+  const TodoAdded(this.todo);
+
+  final Todo todo;
+
+  @override
+  List<Object> get props => [todo];
+}

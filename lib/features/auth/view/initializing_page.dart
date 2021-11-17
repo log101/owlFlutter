@@ -2,7 +2,7 @@ import 'package:auth/features/auth/auth.dart';
 import 'package:auth/features/auth/bloc/auth/auth_bloc.dart';
 import 'package:auth/features/auth/bloc/bloc.dart';
 import 'package:auth/features/auth/repository/todo_repository.dart';
-import 'package:auth/features/auth/view/todo/main_page.dart';
+import 'package:auth/features/auth/view/todo/todos_main_page.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
