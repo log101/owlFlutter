@@ -1,10 +1,10 @@
 import 'package:auth/features/auth/bloc/bloc.dart';
 import 'package:auth/features/auth/model/model.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
+import 'package:provider/provider.dart';
 
 class TodoTile extends StatelessWidget {
-  TodoTile(this.todo);
+  const TodoTile(this.todo, {Key? key}) : super(key: key);
 
   final Todo todo;
 

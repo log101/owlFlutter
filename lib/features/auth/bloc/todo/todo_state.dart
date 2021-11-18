@@ -11,11 +11,11 @@ abstract class TodoState extends Equatable {
 }
 
 class TodoNotLoaded extends TodoState {
-  TodoNotLoaded(List<Todo> todos, date) : super(todos, date);
+  const TodoNotLoaded(List<Todo> todos, date) : super(todos, date);
 }
 
 class TodoLoading extends TodoState {
-  TodoLoading(List<Todo> todos, date) : super(todos, date);
+  const TodoLoading(List<Todo> todos, date) : super(todos, date);
 }
 
 class TodoLoaded extends TodoState {
@@ -23,8 +23,9 @@ class TodoLoaded extends TodoState {
 
   final List<Todo> _todos;
 
+  @override
   List<Todo> get todos => _todos;
 
   @override
-  List<Object> get props => [todos, date];
+  List<Object> get props => [_todos, date];
 }

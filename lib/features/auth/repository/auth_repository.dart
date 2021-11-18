@@ -1,7 +1,6 @@
 import 'dart:async';
 
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 
 class AuthRepository {
   AuthRepository(this._firebaseInstance);
@@ -9,9 +8,7 @@ class AuthRepository {
   final FirebaseAuth _firebaseInstance;
 
   Stream<User?> get user {
-    return _firebaseInstance.authStateChanges().map((User? user) {
-      return user;
-    });
+    return _firebaseInstance.authStateChanges().map((User? user) => user);
   }
 
   FirebaseAuth get firebaseInstance => _firebaseInstance;

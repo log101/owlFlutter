@@ -13,6 +13,8 @@ void main() {
 /// would re-initialize FlutterFire and make our application re-enter loading state,
 /// which is undesired.
 class App extends StatefulWidget {
+  const App({Key? key}) : super(key: key);
+
   // Create the initialization Future outside of `build`:
   @override
   _AppState createState() => _AppState();

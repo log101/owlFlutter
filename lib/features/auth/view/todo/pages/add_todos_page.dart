@@ -3,10 +3,10 @@ import 'package:auth/features/auth/model/model.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:provider/src/provider.dart';
+import 'package:provider/provider.dart';
 
 class AddTodosPage extends StatefulWidget {
-  AddTodosPage({Key? key}) : super(key: key);
+  const AddTodosPage({Key? key}) : super(key: key);
 
   @override
   State<AddTodosPage> createState() => _AddTodosPageState();

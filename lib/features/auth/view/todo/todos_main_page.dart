@@ -1,4 +1,5 @@
 import 'package:auth/features/auth/bloc/bloc.dart';
+import 'package:auth/features/auth/view/chatbot/pages/conversation_page.dart';
 import 'package:auth/features/auth/view/todo/pages/add_todos_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -31,7 +32,7 @@ class _TodoMainPageState extends State<TodoMainPage> {
       }
     }
 
-    List<Widget> _tabs = [ListTodosPage(), AddTodosPage(), ListTodosPage()];
+    List<Widget> _tabs = [ListTodosPage(), ConversationPage(), ListTodosPage()];
 
     return Scaffold(
       appBar: AppBar(
