@@ -45,4 +45,4 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 
-/assets/owl-app-dialogflow.json
+/assets/owl-app-service.json

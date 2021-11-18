@@ -15,9 +15,12 @@ class ConversationPage extends StatelessWidget {
         return Column(
           children: [
             for (var message in state.conversation) MessageTile(message),
-            ElevatedButton(
-                onPressed: () => context.read<ChatbotCubit>().sendMessage("hi"),
-                child: Text("send")),
+            Center(
+              child: ElevatedButton(
+                  onPressed: () =>
+                      context.read<ChatbotCubit>().sendMessage("hi"),
+                  child: Text("send")),
+            ),
           ],
         );
       },

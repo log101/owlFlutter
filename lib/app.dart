@@ -14,11 +14,6 @@ class AuthApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    late DialogFlowtter dialogFlowtter;
-    DialogFlowtter.fromFile(
-            path: "assets/owl-app-dialogflow.json", sessionId: "12345678")
-        .then((value) => dialogFlowtter = value);
-
     return BlocProvider(
       create: (context) =>
           AuthBloc(authRepository: AuthRepository(FirebaseAuth.instance)),

@@ -32,6 +32,12 @@ class _InitializingPageState extends State<InitializingPage> {
   }
 
   @override
+  void dispose() {
+    dialogFlowtter.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Owl',

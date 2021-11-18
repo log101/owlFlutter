@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'package:dialog_flowtter/dialog_flowtter.dart';
-import 'package:flutter/services.dart' show rootBundle;
 
 class ChatbotRepository {
   ChatbotRepository(this.dialogflowInstance);
