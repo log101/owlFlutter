@@ -4,7 +4,7 @@ import 'package:auth/features/auth/view/todo/pages/add_todos_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'pages/list_todos_page.dart';
+import 'todo/pages/list_todos_page.dart';
 
 class TodoMainPage extends StatefulWidget {
   const TodoMainPage({Key? key}) : super(key: key);

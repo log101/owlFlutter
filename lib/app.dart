@@ -19,19 +19,9 @@ class AuthApp extends StatelessWidget {
             path: "assets/owl-app-dialogflow.json", sessionId: "12345678")
         .then((value) => dialogFlowtter = value);
 
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(
-          create: (context) =>
-              AuthBloc(authRepository: AuthRepository(FirebaseAuth.instance)),
-        ),
-        BlocProvider(
-          create: (context) {
-            return ChatbotCubit(
-                chatbotRepository: ChatbotRepository(dialogFlowtter));
-          },
-        ),
-      ],
+    return BlocProvider(
+      create: (context) =>
+          AuthBloc(authRepository: AuthRepository(FirebaseAuth.instance)),
       child: const InitializingPage(),
     );
   }
