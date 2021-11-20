@@ -7,9 +7,13 @@ import 'package:equatable/equatable.dart';
 part 'chatbot_state.dart';
 
 class ChatbotCubit extends Cubit<ChatbotState> {
-  ChatbotCubit({required this.chatbotRepository}) : super(ChatbotInitial([]));
+  ChatbotCubit({required this.chatbotRepository}) : super(ChatbotReady([]));
 
   final ChatbotRepository chatbotRepository;
+
+  void sendGreetings() {
+    sendMessage("hi");
+  }
 
   void sendMessage(String text) async {
     emit(ChatbotThinking(state.conversation));

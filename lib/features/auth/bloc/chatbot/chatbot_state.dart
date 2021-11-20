@@ -28,3 +28,7 @@ class ChatbotDown extends ChatbotState {
 class ChatbotThinking extends ChatbotState {
   ChatbotThinking(List<Message> conversation) : super(conversation);
 }
+
+class ChatbotMakingAppointment extends ChatbotState {
+  ChatbotMakingAppointment(List<Message> conversation) : super(conversation);
+}
